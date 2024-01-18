@@ -6,6 +6,14 @@
 
 ![Alt text](image.png)
 
+#TestBed
+It provides a controlled environment where you can create instances of components, inject dependencies, test angular template
+and simulate various scenarios to test the behavior of your Angular application
+
+**TestBed to acess the component instance**
+![Alt text](image-2.png)
+**TestBed to test component template**
+![Alt text](image-1.png)
 # AngularUnitTesting
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
