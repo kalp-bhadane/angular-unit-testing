@@ -18,6 +18,17 @@ describe('Post Component', () => {
     expect(component).toBeDefined();
   })
 
+  it('should render the post title in the anchor tag', () => {
+    let post: Post = { id: 1, title: 'title1', body: 'body1' };
+    component.post = post;
+    //to detect the assign values in component
+    postCompFixture.detectChanges(); 
+    const compElement: HTMLElement = postCompFixture.nativeElement;
+    const a = compElement.querySelector('a');
+    expect(a?.textContent).toContain(post.title);
+  })
+
+  
   it('should raise event when the delete post is called', () => {
     // let component: PostComponent = new PostComponent();
     let post: Post = { id: 1, title: 'title1', body: 'body1' };
