@@ -2,7 +2,7 @@
 
 **Isolated Testing:** Isolated unit testing refers to the practice of testing individual units of code in isolation, without relying on external dependencies such as databases, network services, or other external systems. The purpose of isolated unit testing is to ensure that each unit of code, typically a function or method, behaves as expected without interference from external factors.
 
-**Mocking:** Mocking is a technique used in isolated unit testing to replace real dependencies with simulated objects that emulate the behavior of the real dependencies. This allows you to isolate the unit under test and control the behavior of its dependencies, making your tests more focused, deterministic, and faster.
+**Mocking:** Mocking is a technique used in isolated unit testing to replace real dependencies with simulated objects that emulate the behavior of the real dependencies. This allows you to isolate the unit under test and control the behavior of its dependencies, making your tests more focused, deterministic, and faster. 
 
 ![Alt text](image.png)
 
