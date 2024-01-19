@@ -6,14 +6,48 @@
 
 ![Alt text](image.png)
 
-#TestBed
+# TestBed
+
 It provides a controlled environment where you can create instances of components, inject dependencies, test angular template
 and simulate various scenarios to test the behavior of your Angular application
 
-**TestBed to acess the component instance**
+**TestBed to acess the component instance (nativeElement)**
+
+Using fixture.nathiveElement we can access the element if the project are running in browser
+
 ![Alt text](image-2.png)
+
 **TestBed to test component template**
 ![Alt text](image-1.png)
+
+**Fixture.debugElement**
+
+fixture.nativeElement will only work if angular project runs in the browser, it will not present if test cases runs at non browsing or server side.
+fixture.debugElement will be used if angular project runs at server side.
+Also the directives we can test using nativeElement
+
+![Alt text](image-3.png)
+
+**Resolving dependency of service**
+
+![Alt text](image-4.png)
+
+**Mocking child component**
+
+![Alt text](image-5.png)
+
+
+
+
+
+
+
+
+
+
+
+
+================================================================================================
 # AngularUnitTesting
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
