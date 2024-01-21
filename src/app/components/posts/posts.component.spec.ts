@@ -3,22 +3,14 @@ import { PostsComponent } from "./posts.component";
 import { of } from "rxjs";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { PostService } from "src/app/services/post/post.service";
-import { Component, Input } from "@angular/core";
 import { By } from "@angular/platform-browser";
+import { PostComponent } from "./post/post.component";
 
 describe('Posts Component', () => {
   let posts: Post[];
   let mockPostService: any;
   let postsComponent: PostsComponent;
   let fixture: ComponentFixture<PostsComponent>;
-
-  @Component({
-    selector: 'app-post',
-    template: '<div></div>',
-  })
-  class FakePostComponent {
-    @Input() post!: Post;
-  }
 
   beforeEach(() => {
     posts = [
@@ -41,7 +33,7 @@ describe('Posts Component', () => {
 
     mockPostService = jasmine.createSpyObj(['getPosts', 'deletePost']);
     TestBed.configureTestingModule({
-      declarations: [PostsComponent, FakePostComponent],
+      declarations: [PostsComponent, PostComponent],
       providers: [
         {
           provide: PostService,
@@ -52,6 +44,20 @@ describe('Posts Component', () => {
 
     fixture = TestBed.createComponent(PostsComponent);
     postsComponent = fixture.componentInstance;
+  });
+
+  it('should check whether exact post is sending to PostComponent', () => {
+    mockPostService.getPosts.and.returnValue(of(posts));
+    fixture.detectChanges();
+    const postComponentDEs = fixture.debugElement.queryAll(
+      By.directive(PostComponent)
+    );
+
+    for (let i = 0; i < postComponentDEs.length; i++) {
+      const postComponentInstance = postComponentDEs[i]
+        .componentInstance;// as PostComponent;
+      expect(postComponentInstance?.post?.title).toEqual(posts[i].title);
+    }
   });
 
   it('should set posts from the service directly', () => {
