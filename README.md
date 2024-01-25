@@ -9,7 +9,7 @@
 # TestBed
 
 It provides a controlled environment where you can create instances of components, inject dependencies, test angular template
-and simulate various scenarios to test the behavior of your Angular application
+and simulate various scenarios to test the behavior of your Angular application.
 
 **TestBed to acess the component instance (nativeElement)**
 
