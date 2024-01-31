@@ -13,7 +13,7 @@ and simulate various scenarios to test the behavior of your Angular application.
 
 **TestBed to acess the component instance (nativeElement)**
 
-Using fixture.nathiveElement we can access the element if the project are running in browser
+Using fixture.nathiveElement we can access the element if the project are running in browser.
 
 ![Alt text](image-2.png)
 
