@@ -22,12 +22,37 @@ describe('Http Client Testing Module', () => {
   });
 
   it('should call the testurl with get Request', () => {
-    const testData: Data = { name: 'Leela Web Dev' };
+    const testData: Data = { name: 'Kalpesh Bhadane' };
     httpClient.get<Data>(testUrl).subscribe((data) => {
       //expect(data).toEqual(testData);
     });
     const request = httpTestingController.expectOne('/data');
+    //passsing dummy data repsonse to API
     request.flush(testData);
+    //checking request method shold be GET
     expect(request.request.method).toBe('GET');
+  });
+
+  it('should test multiple requests', () => {
+    const testData: Data[] = [{ name: 'Kalpesh' }, { name: 'Kalpesh Bhadane' }];
+
+    httpClient.get<Data[]>(testUrl).subscribe((data) => {
+      expect(data.length).toEqual(0);
+    });
+
+    httpClient.get<Data[]>(testUrl).subscribe((data) => {
+      expect(data).toEqual([testData[0]]);
+    });
+
+    httpClient.get<Data[]>(testUrl).subscribe((data) => {
+      expect(data).toEqual(testData);
+    });
+
+    const requests = httpTestingController.match(testUrl);
+    expect(requests.length).toEqual(3);
+
+    requests[0].flush([]);
+    requests[1].flush([testData[0]]);
+    requests[2].flush(testData);
   });
 });
