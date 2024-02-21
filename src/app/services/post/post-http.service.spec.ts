@@ -48,4 +48,20 @@ import {
         expect(request.request.method).toBe('GET');
       });
     });
+    describe('getPost()', () => {
+        it('should return single post when getpost is called with postId', () => {
+          postService.getPost(1).subscribe();
+    
+          const request = httpTestingController.expectOne(
+            `https://jsonplaceholder.typicode.com/posts/1`
+          );
+    
+          expect(request.request.method).toBe('GET');
+        });
+      });
+    
+      afterEach(() => {
+        //verifying that only given URL will get call and not other than that
+        httpTestingController.verify();
+      });
   });
