@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { StrengthPipe } from './pipes/Strength/strength.pipe';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/posts/post/post.component';
+import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { PostComponent } from './components/posts/post/post.component';
     StrengthPipe,
     PostsComponent,
     PostComponent,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,
