@@ -93,5 +93,40 @@ describe('Posts Component', () => {
       postsComponent.delete(posts[1]);
       expect(mockPostService.deletePost).toHaveBeenCalledTimes(1);
     });
+
+    it('should call delete method when post component button is clicked', () => {
+      spyOn(postsComponent, 'delete');
+      //initializing the child components for all posts
+      mockPostService.getPosts.and.returnValue(of(posts));
+      fixture.detectChanges();
+
+      let postComponentDEs = fixture.debugElement.queryAll(
+        By.directive(PostComponent)
+      );
+
+      for (let i = 0; i < postComponentDEs.length; i++) {
+        postComponentDEs[i]
+          .query(By.css('button'))
+          .triggerEventHandler('click', { preventDefault: () => {} });
+        expect(postsComponent.delete).toHaveBeenCalledWith(posts[i]);
+      }
+    });
+
+    it('should call the delete method when the delete event is emitted in Post Component', () => {
+      spyOn(postsComponent, 'delete');
+      mockPostService.getPosts.and.returnValue(of(posts));
+      fixture.detectChanges();
+
+      let postComponentDEs = fixture.debugElement.queryAll(
+        By.directive(PostComponent)
+      );
+
+      for (let i = 0; i < postComponentDEs.length; i++) {
+        (postComponentDEs[i].componentInstance as PostComponent).onDelete.emit(
+          posts[i]
+        );
+        expect(postsComponent.delete).toHaveBeenCalledWith(posts[i]);
+      }
+    });
   })
 })
